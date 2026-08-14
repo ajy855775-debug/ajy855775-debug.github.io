@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>选择主页</title>
+<style>
+  :root {
+    --bg: #f4f5f7;
+    --card: #ffffff;
+    --text: #1f2329;
+    --sub: #8a919f;
+    --accent: #31c27c;
+    --accent-2: #ff6699;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", "Segoe UI", sans-serif;
+    background: linear-gradient(160deg, #e8f8f0 0%, #f4f5f7 45%, #fdeef4 100%);
+    min-height: 100vh;
+    padding: 40px 20px 32px;
+    color: var(--text);
+  }
+  .header { text-align: center; margin-bottom: 28px; }
+  .logo {
+    width: 64px; height: 64px; border-radius: 18px;
+    background: linear-gradient(135deg, var(--accent), #1aa86b);
+    display: flex; align-items: center; justify-content: center;
+    margin: 0 auto 14px;
+    box-shadow: 0 8px 20px rgba(49, 194, 124, 0.28);
+  }
+  .logo svg { width: 34px; height: 34px; }
+  .header h1 { font-size: 22px; font-weight: 700; letter-spacing: 0.5px; }
+  .header p { margin-top: 6px; font-size: 14px; color: var(--sub); }
+  .list { max-width: 480px; margin: 0 auto; display: flex; flex-direction: column; gap: 14px; }
+  a.card {
+    display: flex; align-items: center; gap: 14px;
+    background: var(--card); border-radius: 18px; padding: 16px;
+    text-decoration: none; color: inherit;
+    box-shadow: 0 4px 16px rgba(31, 35, 41, 0.06);
+    transition: transform .15s ease, box-shadow .15s ease;
+    position: relative; overflow: hidden;
+  }
+  a.card:active { transform: scale(0.97); box-shadow: 0 2px 8px rgba(31, 35, 41, 0.1); }
+  .avatar {
+    width: 52px; height: 52px; border-radius: 50%; flex-shrink: 0;
+    display: flex; align-items: center; justify-content: center;
+    color: #fff; font-size: 22px; font-weight: 700;
+  }
+  .info { flex: 1; min-width: 0; }
+  .info .name { font-size: 17px; font-weight: 600; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .info .desc { margin-top: 4px; font-size: 12.5px; color: var(--sub); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .arrow { color: #c6cbd3; flex-shrink: 0; }
+  .arrow svg { width: 20px; height: 20px; display: block; }
+  .footer { text-align: center; margin-top: 32px; font-size: 12px; color: #b4bac4; }
+</style>
+</head>
+<body>
+  <div class="header">
+    <div class="logo">
+      <svg viewBox="0 0 24 24" fill="none"><path d="M12 4v4m0 8v4m-8-8h4m8 0h4" stroke="#fff" stroke-width="2" stroke-linecap="round"/><circle cx="12" cy="12" r="3" fill="#fff"/></svg>
+    </div>
+    <h1>选择要访问的主页</h1>
+    <p>点击下方卡片，跳转到对应主页</p>
+  </div>
+
+  <div class="list">
+    <a class="card" href="https://static-play.kg.qq.com/node/personal_v2?uid=63999d86232a348a314b&shareUid=639c9a8625253482334b&pageId=homepage_guest">
+      <div class="avatar" style="background:linear-gradient(135deg,#ff9a9e,#fad0c4);color:#8a4a3a;">布</div>
+      <div class="info">
+        <div class="name">小布丁</div>
+        <div class="desc">26 岁 · 四川成都</div>
+      </div>
+      <div class="arrow"><svg viewBox="0 0 24 24" fill="none"><path d="M9 6l6 6-6 6" stroke="#c6cbd3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+    </a>
+
+    <a class="card" href="https://static-play.kg.qq.com/node/personal_v2?uid=64999f86222e358837&shareUid=639c9a8625253482334b&pageId=homepage_guest">
+      <div class="avatar" style="background:linear-gradient(135deg,#a18cd1,#fbc2eb);color:#5b3f8a;">楚</div>
+      <div class="info">
+        <div class="name">楚昭禾</div>
+        <div class="desc">29 岁 · 辽宁营口</div>
+      </div>
+      <div class="arrow"><svg viewBox="0 0 24 24" fill="none"><path d="M9 6l6 6-6 6" stroke="#c6cbd3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+    </a>
+
+    <a class="card" href="https://static-play.kg.qq.com/node/personal_v2?uid=63999d86262b32893546&shareUid=639c9a8625253482334b&pageId=homepage_guest">
+      <div class="avatar" style="background:linear-gradient(135deg,#fbc2eb,#ff9a9e);color:#7a3350;">悦</div>
+      <div class="info">
+        <div class="name">悦悦（生病中）</div>
+        <div class="desc">22 岁 · 广东深圳</div>
+      </div>
+      <div class="arrow"><svg viewBox="0 0 24 24" fill="none"><path d="M9 6l6 6-6 6" stroke="#c6cbd3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+    </a>
+
+    <a class="card" href="https://static-play.kg.qq.com/node/personal_v2?uid=63999d86222d3183344a&shareUid=639c9a8625253482334b&pageId=homepage_guest">
+      <div class="avatar" style="background:linear-gradient(135deg,#84fab0,#8fd3f4);color:#1c5e47;">安</div>
+      <div class="info">
+        <div class="name">安宁</div>
+        <div class="desc">全民K歌 · 个人主页</div>
+      </div>
+      <div class="arrow"><svg viewBox="0 0 24 24" fill="none"><path d="M9 6l6 6-6 6" stroke="#c6cbd3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+    </a>
+  </div>
+
+  <div class="footer">扫码后请选择你想访问的用户主页</div>
+</body>
+</html>
