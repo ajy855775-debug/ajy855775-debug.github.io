@@ -44,8 +44,11 @@
   a.card:active { transform: scale(0.97); box-shadow: 0 2px 8px rgba(31, 35, 41, 0.1); }
   .avatar {
     width: 52px; height: 52px; border-radius: 50%; flex-shrink: 0;
-    display: flex; align-items: center; justify-content: center;
-    color: #fff; font-size: 22px; font-weight: 700;
+    overflow: hidden;
+    background: #f0f1f3;
+  }
+  .avatar img {
+    width: 100%; height: 100%; object-fit: cover; display: block;
   }
   .info { flex: 1; min-width: 0; }
   .info .name { font-size: 17px; font-weight: 600; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
@@ -66,7 +69,7 @@
 
   <div class="list">
     <a class="card" href="https://static-play.kg.qq.com/node/personal_v2?uid=63999d86232a348a314b&shareUid=639c9a8625253482334b&pageId=homepage_guest">
-      <div class="avatar" style="background:linear-gradient(135deg,#ff9a9e,#fad0c4);color:#8a4a3a;">布</div>
+      <div class="avatar"><img src="avatars/xiaobuding.jpg" alt="小布丁"></div>
       <div class="info">
         <div class="name">小布丁</div>
         <div class="desc">26 岁 · 四川成都</div>
@@ -75,7 +78,7 @@
     </a>
 
     <a class="card" href="https://static-play.kg.qq.com/node/personal_v2?uid=64999f86222e358837&shareUid=639c9a8625253482334b&pageId=homepage_guest">
-      <div class="avatar" style="background:linear-gradient(135deg,#a18cd1,#fbc2eb);color:#5b3f8a;">楚</div>
+      <div class="avatar"><img src="avatars/chuzhaohe.jpg" alt="楚昭禾"></div>
       <div class="info">
         <div class="name">楚昭禾</div>
         <div class="desc">29 岁 · 辽宁营口</div>
@@ -84,7 +87,7 @@
     </a>
 
     <a class="card" href="https://static-play.kg.qq.com/node/personal_v2?uid=63999d86262b32893546&shareUid=639c9a8625253482334b&pageId=homepage_guest">
-      <div class="avatar" style="background:linear-gradient(135deg,#fbc2eb,#ff9a9e);color:#7a3350;">悦</div>
+      <div class="avatar"><img src="avatars/yueyue.jpg" alt="悦悦"></div>
       <div class="info">
         <div class="name">悦悦（生病中）</div>
         <div class="desc">22 岁 · 广东深圳</div>
@@ -93,7 +96,7 @@
     </a>
 
     <a class="card" href="https://static-play.kg.qq.com/node/personal_v2?uid=63999d86222d3183344a&shareUid=639c9a8625253482334b&pageId=homepage_guest">
-      <div class="avatar" style="background:linear-gradient(135deg,#84fab0,#8fd3f4);color:#1c5e47;">安</div>
+      <div class="avatar"><img src="avatars/anning.jpg" alt="安宁"></div>
       <div class="info">
         <div class="name">安宁</div>
         <div class="desc">全民K歌 · 个人主页</div>
