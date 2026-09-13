@@ -1,110 +1,43 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="zh-CN">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<title>选择主页</title>
-<style>
-  :root {
-    --bg: #f4f5f7;
-    --card: #ffffff;
-    --text: #1f2329;
-    --sub: #8a919f;
-    --accent: #31c27c;
-    --accent-2: #ff6699;
-  }
-  * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
-  body {
-    font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", "Segoe UI", sans-serif;
-    background: linear-gradient(160deg, #e8f8f0 0%, #f4f5f7 45%, #fdeef4 100%);
-    min-height: 100vh;
-    padding: 40px 20px 32px;
-    color: var(--text);
-  }
-  .header { text-align: center; margin-bottom: 28px; }
-  .logo {
-    width: 64px; height: 64px; border-radius: 18px;
-    background: linear-gradient(135deg, var(--accent), #1aa86b);
-    display: flex; align-items: center; justify-content: center;
-    margin: 0 auto 14px;
-    box-shadow: 0 8px 20px rgba(49, 194, 124, 0.28);
-  }
-  .logo svg { width: 34px; height: 34px; }
-  .header h1 { font-size: 22px; font-weight: 700; letter-spacing: 0.5px; }
-  .header p { margin-top: 6px; font-size: 14px; color: var(--sub); }
-  .list { max-width: 480px; margin: 0 auto; display: flex; flex-direction: column; gap: 14px; }
-  a.card {
-    display: flex; align-items: center; gap: 14px;
-    background: var(--card); border-radius: 18px; padding: 16px;
-    text-decoration: none; color: inherit;
-    box-shadow: 0 4px 16px rgba(31, 35, 41, 0.06);
-    transition: transform .15s ease, box-shadow .15s ease;
-    position: relative; overflow: hidden;
-  }
-  a.card:active { transform: scale(0.97); box-shadow: 0 2px 8px rgba(31, 35, 41, 0.1); }
-  .avatar {
-    width: 52px; height: 52px; border-radius: 50%; flex-shrink: 0;
-    overflow: hidden;
-    background: #f0f1f3;
-  }
-  .avatar img {
-    width: 100%; height: 100%; object-fit: cover; display: block;
-  }
-  .info { flex: 1; min-width: 0; }
-  .info .name { font-size: 17px; font-weight: 600; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-  .info .desc { margin-top: 4px; font-size: 12.5px; color: var(--sub); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-  .arrow { color: #c6cbd3; flex-shrink: 0; }
-  .arrow svg { width: 20px; height: 20px; display: block; }
-  .footer { text-align: center; margin-top: 32px; font-size: 12px; color: #b4bac4; }
-</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="theme-color" content="#F4F1EA" />
+  <title>Roomie · 合租生活管家</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{--ink:#1e2721;--muted:#768078;--paper:#f5f2eb;--card:#fffdf8;--line:#deddd5;--green:#1f6b4b;--lime:#dff56b;--orange:#ff9b70;--blue:#b7dce5;--shadow:0 16px 40px rgba(32,47,39,.08)}
+    *{box-sizing:border-box} body{margin:0;background:var(--paper);color:var(--ink);font-family:"DM Sans","Noto Sans SC",sans-serif}.app{max-width:1240px;margin:auto;padding:26px 30px 100px}.top{display:flex;align-items:center;justify-content:space-between;margin-bottom:32px}.brand{display:flex;align-items:center;gap:11px;font-weight:700;font-size:22px}.logo{width:38px;height:38px;border-radius:13px;background:var(--green);display:grid;place-items:center;color:white;font-size:20px;transform:rotate(-4deg)}.house{display:flex;align-items:center;gap:10px;background:#ebe8e0;border:1px solid #e1dfd7;border-radius:99px;padding:8px 13px;font-weight:600;font-size:13px}.avatar{width:28px;height:28px;border-radius:50%;display:grid;place-items:center;background:var(--orange);font-size:12px}.hero{display:grid;grid-template-columns:1.45fr .55fr;gap:22px;margin-bottom:25px}.welcome{background:var(--green);color:white;border-radius:30px;padding:34px;position:relative;overflow:hidden;min-height:232px}.welcome:after{content:"";position:absolute;width:250px;height:250px;border:55px solid rgba(223,245,107,.16);border-radius:50%;right:-65px;top:-78px}.eyebrow{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#c4d6cc;font-weight:700}.welcome h1{font-size:37px;line-height:1.2;margin:12px 0 8px;max-width:550px}.welcome p{margin:0;color:#d4e1da;font-size:14px}.roommates{position:absolute;bottom:25px;right:30px;display:flex;z-index:1}.face{width:44px;height:44px;border:3px solid var(--green);border-radius:50%;display:grid;place-items:center;font-size:18px;margin-left:-9px}.f1{background:#f6c29e}.f2{background:#b8d6f0}.f3{background:#e6c2eb}.f4{background:var(--lime);font-size:13px;color:var(--ink);font-weight:700}.pulse{background:var(--lime);border-radius:30px;padding:27px;color:#1d382b;display:flex;flex-direction:column;justify-content:space-between}.pulse .label{font-size:13px;font-weight:700}.pulse strong{font-size:47px;line-height:1}.pulse small{font-size:13px;line-height:1.5}.grid{display:grid;grid-template-columns:1.08fr .92fr;gap:22px}.card{background:var(--card);border:1px solid var(--line);border-radius:24px;padding:24px;box-shadow:var(--shadow)}.cardhead{display:flex;align-items:center;justify-content:space-between;margin-bottom:20px}.cardhead h2{font-size:18px;margin:0}.link{color:var(--green);font-size:13px;font-weight:700;cursor:pointer}.balance{background:#edf4ef;border-radius:20px;padding:20px;display:flex;align-items:center;justify-content:space-between;margin-bottom:18px}.balance small{color:var(--muted)}.balance strong{display:block;font-size:29px;margin-top:5px}.btn{border:0;background:var(--ink);color:white;border-radius:13px;padding:11px 16px;font:inherit;font-size:13px;font-weight:600;cursor:pointer;transition:.2s}.btn:hover{transform:translateY(-2px)}.btn.light{background:var(--card);color:var(--ink);border:1px solid var(--line)}.row{display:flex;align-items:center;gap:13px;padding:14px 2px;border-bottom:1px solid #eceae4}.row:last-child{border:0}.ico{width:42px;height:42px;border-radius:14px;background:#f1eee7;display:grid;place-items:center;font-size:18px}.info{flex:1}.info b{font-size:14px}.info small{display:block;color:var(--muted);font-size:12px;margin-top:3px}.amount{font-weight:700;font-size:14px}.amount.out{color:#c65c39}.chore{display:flex;align-items:center;gap:15px;background:#f6f3ed;padding:16px;border-radius:18px;margin-bottom:12px}.date{background:var(--ink);color:white;width:49px;height:52px;border-radius:14px;display:grid;place-items:center;line-height:1}.date b{font-size:18px}.date small{font-size:9px}.status{margin-left:auto;font-size:11px;font-weight:700;padding:6px 9px;border-radius:99px;background:#dceadf;color:var(--green)}.status.today{background:#ffe2d4;color:#a84627}.section{margin-top:22px}.section-title{display:flex;align-items:center;justify-content:space-between;margin-bottom:13px}.section-title h2{font-size:19px;margin:0}.inventory{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.item{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:18px}.item .itemtop{display:flex;justify-content:space-between;align-items:start}.item .emoji{font-size:25px}.tag{font-size:10px;border-radius:99px;padding:5px 8px;background:#eee}.tag.low{background:#ffe1d6;color:#a63e20}.meter{height:6px;background:#e8e6df;border-radius:99px;overflow:hidden;margin:15px 0 8px}.fill{height:100%;background:var(--green);border-radius:99px}.fill.low{background:var(--orange)}.item b{font-size:13px}.item small{color:var(--muted);font-size:11px;display:block}.promise{margin-top:22px;background:#252f29;color:white;border:0}.promise blockquote{font-size:19px;line-height:1.65;margin:8px 0 18px}.promise footer{color:#aeb7b1;font-size:12px}.nav{position:fixed;bottom:18px;left:50%;transform:translateX(-50%);background:rgba(30,39,33,.94);backdrop-filter:blur(16px);display:flex;border-radius:20px;padding:7px;z-index:10;box-shadow:0 15px 35px rgba(0,0,0,.22)}.nav button{border:0;background:transparent;color:#b7bdb9;border-radius:14px;padding:10px 18px;cursor:pointer;font:inherit;font-size:12px}.nav button.active{background:var(--lime);color:var(--ink);font-weight:700}.nav span{display:block;font-size:16px;margin-bottom:3px}.toast{position:fixed;top:20px;left:50%;transform:translate(-50%,-90px);background:var(--ink);color:white;padding:13px 20px;border-radius:13px;z-index:30;font-size:13px;transition:.35s}.toast.show{transform:translate(-50%,0)}.modal{position:fixed;inset:0;background:rgba(19,27,22,.4);backdrop-filter:blur(5px);z-index:20;display:none;place-items:center;padding:20px}.modal.show{display:grid}.sheet{background:var(--card);width:min(430px,100%);border-radius:26px;padding:25px}.sheet h2{margin:0 0 7px}.sheet p{color:var(--muted);font-size:13px;margin:0 0 20px}.field{margin-bottom:13px}.field label{display:block;font-size:11px;font-weight:700;margin-bottom:6px}.field input,.field select{width:100%;padding:13px;border:1px solid var(--line);background:white;border-radius:12px;font:inherit}.actions{display:flex;justify-content:flex-end;gap:9px;margin-top:20px}.hide{display:none!important}
+    @media(max-width:800px){.app{padding:20px 16px 95px}.hero,.grid{grid-template-columns:1fr}.welcome{padding:28px;min-height:245px}.welcome h1{font-size:30px}.roommates{right:25px}.pulse{min-height:170px}.inventory{grid-template-columns:1fr}.nav{width:calc(100% - 28px);justify-content:space-around}.nav button{padding:9px 12px}.house .hname{display:none}}
+  </style>
 </head>
 <body>
-  <div class="header">
-    <div class="logo">
-      <svg viewBox="0 0 24 24" fill="none"><path d="M12 4v4m0 8v4m-8-8h4m8 0h4" stroke="#fff" stroke-width="2" stroke-linecap="round"/><circle cx="12" cy="12" r="3" fill="#fff"/></svg>
-    </div>
-    <h1>选择要访问的主页</h1>
-    <p>点击下方卡片，跳转到对应主页</p>
+<main class="app">
+  <header class="top"><div class="brand"><div class="logo">⌂</div> Roomie</div><div class="house"><div class="avatar">🌿</div><span class="hname">梧桐公寓 · 302</span><span>⌄</span></div></header>
+  <section class="hero">
+    <div class="welcome"><div class="eyebrow">Friday · Sep 12</div><h1>晚上好，小满<br>家里一切井井有条。</h1><p>3 位室友在线 · 本月已经一起生活 286 天</p><div class="roommates"><div class="face f1">👩🏻</div><div class="face f2">👨🏻</div><div class="face f3">🧑🏻</div><div class="face f4">+1</div></div></div>
+    <div class="pulse"><div class="label">本月合租默契值 ↗</div><strong>92</strong><small>费用结清及时，值日完成率 88%<br>比上个月更默契了 6 分</small></div>
+  </section>
+  <div class="grid">
+    <section class="card" data-page="home bills"><div class="cardhead"><h2>💸 费用管家</h2><span class="link" onclick="toast('已打开全部账单')">全部账单 →</span></div><div class="balance"><div><small>我的待结算</small><strong>¥ 128.40</strong></div><button class="btn" onclick="openModal()">+ 记一笔</button></div><div id="billList"><div class="row"><div class="ico">⚡</div><div class="info"><b>8 月电费</b><small>小满支付 · 4 人均摊</small></div><div class="amount out">- ¥63.20</div></div><div class="row"><div class="ico">🛒</div><div class="info"><b>周末采购</b><small>阿哲支付 · 3 人参与</small></div><div class="amount out">- ¥41.80</div></div><div class="row"><div class="ico">💧</div><div class="info"><b>水费到账</b><small>来自 林夕</small></div><div class="amount">+ ¥24.50</div></div></div></section>
+    <section class="card" data-page="home chores"><div class="cardhead"><h2>🧹 本周值日</h2><span class="link" onclick="toast('已同步至所有室友')">调整排班 →</span></div><div class="chore"><div class="date"><small>今天</small><b>12</b></div><div class="info"><b>厨房 · 台面与地面</b><small>轮到 小满 · 约 15 分钟</small></div><span class="status today" onclick="done(this)">待完成</span></div><div class="chore"><div class="date"><small>周日</small><b>14</b></div><div class="info"><b>客厅 · 吸尘与整理</b><small>轮到 阿哲 · 约 20 分钟</small></div><span class="status">已接受</span></div><div class="chore"><div class="date"><small>周二</small><b>16</b></div><div class="info"><b>卫生间 · 深度清洁</b><small>轮到 林夕 · 约 25 分钟</small></div><span class="status">已接受</span></div></section>
   </div>
+  <section class="section" data-page="home items"><div class="section-title"><h2>公共物品</h2><span class="link" onclick="toast('采购清单已生成')">查看采购清单 →</span></div><div class="inventory"><div class="item"><div class="itemtop"><span class="emoji">🧻</span><span class="tag low">快用完了</span></div><div class="meter"><div class="fill low" style="width:18%"></div></div><b>抽纸</b><small>预计还能用 2 天</small></div><div class="item"><div class="itemtop"><span class="emoji">🫧</span><span class="tag">充足</span></div><div class="meter"><div class="fill" style="width:72%"></div></div><b>洗衣液</b><small>阿哲 · 3 天前更新</small></div><div class="item"><div class="itemtop"><span class="emoji">🗑️</span><span class="tag">一般</span></div><div class="meter"><div class="fill" style="width:48%"></div></div><b>垃圾袋</b><small>剩余约 12 个</small></div></div></section>
+  <section class="card promise" data-page="home rules"><div class="cardhead"><h2>📌 我们的室友公约</h2><span class="link" style="color:var(--lime)" onclick="toast('公约共识度 100%')">4 人已确认</span></div><blockquote>“夜间 23:00 后请调低音量；朋友留宿提前在群里说一声；公共空间，用完比来时更干净一点。”</blockquote><footer>最后由小满更新于 9 月 5 日 · 第 3 版</footer></section>
+</main>
+<nav class="nav"><button class="active" data-tab="home"><span>⌂</span>首页</button><button data-tab="bills"><span>¥</span>账单</button><button data-tab="chores"><span>✓</span>值日</button><button data-tab="items"><span>□</span>物品</button><button data-tab="rules"><span>☷</span>公约</button></nav>
+<div class="toast" id="toast"></div>
+<div class="modal" id="modal" onclick="if(event.target===this)closeModal()"><div class="sheet"><h2>记一笔共同开销</h2><p>系统会自动按参与人均摊，并提醒室友确认。</p><div class="field"><label>费用名称</label><input id="title" placeholder="例如：本月燃气费"></div><div class="field"><label>金额</label><input id="price" type="number" placeholder="¥ 0.00"></div><div class="field"><label>分摊方式</label><select><option>4 人平均分摊</option><option>按参与人分摊</option><option>自定义金额</option></select></div><div class="actions"><button class="btn light" onclick="closeModal()">取消</button><button class="btn" onclick="addBill()">保存并通知</button></div></div></div>
+<script>
+  const toastEl=document.getElementById('toast');let timer;
+  function toast(t){toastEl.textContent=t;toastEl.classList.add('show');clearTimeout(timer);timer=setTimeout(()=>toastEl.classList.remove('show'),2200)}
+  function openModal(){document.getElementById('modal').classList.add('show');document.getElementById('title').focus()} function closeModal(){document.getElementById('modal').classList.remove('show')}
+  function addBill(){let t=document.getElementById('title').value||'新的共同开销',p=Number(document.getElementById('price').value||0);document.getElementById('billList').insertAdjacentHTML('afterbegin',`<div class="row"><div class="ico">🧾</div><div class="info"><b>${t.replace(/[<>]/g,'')}</b><small>小满支付 · 4 人均摊</small></div><div class="amount out">- ¥${(p/4).toFixed(2)}</div></div>`);closeModal();toast('已记录，并通知 3 位室友');document.getElementById('title').value='';document.getElementById('price').value=''}
+  function done(el){el.textContent='已完成';el.classList.remove('today');toast('太棒了！默契值 +2')}
+  document.querySelectorAll('.nav button').forEach(b=>b.onclick=()=>{document.querySelectorAll('.nav button').forEach(x=>x.classList.remove('active'));b.classList.add('active');let t=b.dataset.tab;document.querySelectorAll('[data-page]').forEach(s=>s.classList.toggle('hide',t!=='home'&&!s.dataset.page.includes(t)));window.scrollTo({top:t==='home'?0:document.querySelector(`[data-page~="${t}"]`).offsetTop-30,behavior:'smooth'});toast(t==='home'?'欢迎回家':'已切换到'+b.innerText.trim())})
+</script>
+</body></html>
 
-  <div class="list">
-    <a class="card" href="https://static-play.kg.qq.com/node/personal_v2?uid=63999d86232a348a314b&shareUid=639c9a8625253482334b&pageId=homepage_guest">
-      <div class="avatar"><img src="avatars/xiaobuding.jpg" alt="小布丁"></div>
-      <div class="info">
-        <div class="name">小布丁</div>
-        <div class="desc">四川成都</div>
-      </div>
-      <div class="arrow"><svg viewBox="0 0 24 24" fill="none"><path d="M9 6l6 6-6 6" stroke="#c6cbd3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-    </a>
-
-    <a class="card" href="https://static-play.kg.qq.com/node/personal_v2?uid=64999f86222e358837&shareUid=639c9a8625253482334b&pageId=homepage_guest">
-      <div class="avatar"><img src="avatars/chuzhaohe.jpg" alt="楚昭禾"></div>
-      <div class="info">
-        <div class="name">楚昭禾</div>
-        <div class="desc">辽宁营口</div>
-      </div>
-      <div class="arrow"><svg viewBox="0 0 24 24" fill="none"><path d="M9 6l6 6-6 6" stroke="#c6cbd3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-    </a>
-
-    <a class="card" href="https://static-play.kg.qq.com/node/personal_v2?uid=63999d86262b32893546&shareUid=639c9a8625253482334b&pageId=homepage_guest">
-      <div class="avatar"><img src="avatars/yueyue.jpg" alt="悦悦"></div>
-      <div class="info">
-        <div class="name">悦悦（生病中）</div>
-        <div class="desc">广东深圳</div>
-      </div>
-      <div class="arrow"><svg viewBox="0 0 24 24" fill="none"><path d="M9 6l6 6-6 6" stroke="#c6cbd3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-    </a>
-
-    <a class="card" href="https://static-play.kg.qq.com/node/personal_v2?uid=63999d86222d3183344a&shareUid=639c9a8625253482334b&pageId=homepage_guest">
-      <div class="avatar"><img src="avatars/anning.jpg" alt="安宁"></div>
-      <div class="info">
-        <div class="name">安宁</div>
-        <div class="desc">湖北 武汉</div>
-      </div>
-      <div class="arrow"><svg viewBox="0 0 24 24" fill="none"><path d="M9 6l6 6-6 6" stroke="#c6cbd3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-    </a>
-  </div>
-
-  <div class="footer">扫码后请选择你想访问的用户主页</div>
-</body>
-</html>
