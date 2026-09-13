@@ -33,10 +33,19 @@
 <div class="modal" id="modal" onclick="if(event.target===this)closeModal()"><div class="sheet"><h2>记一笔共同开销</h2><p>系统会自动按参与人均摊，并提醒室友确认。</p><div class="field"><label>费用名称</label><input id="title" placeholder="例如：本月燃气费"></div><div class="field"><label>金额</label><input id="price" type="number" placeholder="¥ 0.00"></div><div class="field"><label>分摊方式</label><select><option>4 人平均分摊</option><option>按参与人分摊</option><option>自定义金额</option></select></div><div class="actions"><button class="btn light" onclick="closeModal()">取消</button><button class="btn" onclick="addBill()">保存并通知</button></div></div></div>
 <script>
   const toastEl=document.getElementById('toast');let timer;
+  const STORAGE_KEY='roomie-demo-v2';
+  const saved=JSON.parse(localStorage.getItem(STORAGE_KEY)||'{"bills":[],"choreDone":false}');
+  const now=new Date(), hour=now.getHours();
+  document.querySelector('.eyebrow').textContent=new Intl.DateTimeFormat('zh-CN',{weekday:'long',month:'long',day:'numeric'}).format(now);
+  document.querySelector('.welcome h1').childNodes[0].textContent=(hour<6?'夜深了':hour<11?'早上好':hour<14?'中午好':hour<18?'下午好':'晚上好')+'，小满';
   function toast(t){toastEl.textContent=t;toastEl.classList.add('show');clearTimeout(timer);timer=setTimeout(()=>toastEl.classList.remove('show'),2200)}
   function openModal(){document.getElementById('modal').classList.add('show');document.getElementById('title').focus()} function closeModal(){document.getElementById('modal').classList.remove('show')}
-  function addBill(){let t=document.getElementById('title').value||'新的共同开销',p=Number(document.getElementById('price').value||0);document.getElementById('billList').insertAdjacentHTML('afterbegin',`<div class="row"><div class="ico">🧾</div><div class="info"><b>${t.replace(/[<>]/g,'')}</b><small>小满支付 · 4 人均摊</small></div><div class="amount out">- ¥${(p/4).toFixed(2)}</div></div>`);closeModal();toast('已记录，并通知 3 位室友');document.getElementById('title').value='';document.getElementById('price').value=''}
-  function done(el){el.textContent='已完成';el.classList.remove('today');toast('太棒了！默契值 +2')}
+  function billMarkup(t,p){return `<div class="row"><div class="ico">🧾</div><div class="info"><b>${t.replace(/[<>]/g,'')}</b><small>小满支付 · 4 人均摊</small></div><div class="amount out">- ¥${(p/4).toFixed(2)}</div></div>`}
+  saved.bills.forEach(x=>document.getElementById('billList').insertAdjacentHTML('afterbegin',billMarkup(x.title,x.price)));
+  function addBill(){let t=document.getElementById('title').value.trim(),p=Number(document.getElementById('price').value);if(!t){toast('请填写费用名称');return}if(!p||p<=0){toast('请输入有效金额');return}document.getElementById('billList').insertAdjacentHTML('afterbegin',billMarkup(t,p));saved.bills.push({title:t,price:p});localStorage.setItem(STORAGE_KEY,JSON.stringify(saved));closeModal();toast('已记录，并通知 3 位室友');document.getElementById('title').value='';document.getElementById('price').value=''}
+  function done(el){if(el.textContent==='已完成')return;el.textContent='已完成';el.classList.remove('today');saved.choreDone=true;localStorage.setItem(STORAGE_KEY,JSON.stringify(saved));document.querySelector('.pulse strong').textContent='94';toast('太棒了！默契值 +2')}
+  if(saved.choreDone){const task=document.querySelector('.status.today');if(task){task.textContent='已完成';task.classList.remove('today');document.querySelector('.pulse strong').textContent='94'}}
+  document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal();if(e.key==='Enter'&&document.getElementById('modal').classList.contains('show'))addBill()});
   document.querySelectorAll('.nav button').forEach(b=>b.onclick=()=>{document.querySelectorAll('.nav button').forEach(x=>x.classList.remove('active'));b.classList.add('active');let t=b.dataset.tab;document.querySelectorAll('[data-page]').forEach(s=>s.classList.toggle('hide',t!=='home'&&!s.dataset.page.includes(t)));window.scrollTo({top:t==='home'?0:document.querySelector(`[data-page~="${t}"]`).offsetTop-30,behavior:'smooth'});toast(t==='home'?'欢迎回家':'已切换到'+b.innerText.trim())})
 </script>
 </body></html>
